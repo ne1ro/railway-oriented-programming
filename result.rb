@@ -64,6 +64,7 @@ class SignUp
     @notifier = Notifier.new
   end
 
+  # @return [Failure, Result]
   def call
     yield validate_email(email)
     yield validate_name(name)
@@ -77,6 +78,7 @@ class SignUp
   end
 
   # Equals call - but without do notation
+  # @return [Failure, Result]
   def call_bindings
     validate_email(email).bind do
       validate_name(name).bind do
